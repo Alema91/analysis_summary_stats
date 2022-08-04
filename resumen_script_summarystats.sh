@@ -9,7 +9,7 @@ HOST=$(pwd | cut -d '/' -f8 | cut -d '_' -f4 | tr '[:upper:]' '[:lower:]' | sed 
 cat samples_id_v2_mod.txt | while read in
 do
 	# run
-    echo -e "$(cat samples_id_v2.txt | xargs -I % ls -lt ../../RAW/%* | cut -d'/' -f7 | sort -u | head -n1) \
+    echo -e "$(cat samples_id_v2.txt | xargs -I % ls -lt ../../RAW/%* | bash | cut -d'/' -f7 | sort -u | head -n1) \
     
     # usuario
     \t${USER}

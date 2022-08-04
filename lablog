@@ -1,0 +1,6 @@
+# En caso de no poder usar
+
+PWD="pwd"
+
+cd $PWD
+

@@ -39,4 +39,4 @@ mqc_filter <- data_summary_mqc[data_summary_mqc$Sample %in% id_luis, ]
 #### Write data_filter
 
 write.table(mapping_filter, "output/filter/mapping_illumina_filter.xlsx", sep = "\t", row.names = F, quote = F)
-write.table(mapping_filter, "output/filter/summary_mqc_filter.csv", sep = ",", row.names = F, quote = F)
+write.table(mqc_filter, "output/filter/summary_mqc_filter.csv", sep = ",", row.names = F, quote = F)
