@@ -1,6 +1,7 @@
-# En caso de no poder usar
+#module load QUAST/5.0.2-foss-2020a-Python-3.8.2
 
-PWD="pwd"
+scratch_dir=$(echo $PWD | sed "s/\/data\/bi\/scratch_tmp/\/scratch/g")
+CONSENSUS="*/variants/ivar/consensus/bcftools/"
 
-cd $PWD
+echo "srun --partition short_idx --output QUAST.%j.log --chdir ${scratch_dir} quast $CONSENSUS/*.consensus.fa -o quast_results" > _05_quast.sh
 
