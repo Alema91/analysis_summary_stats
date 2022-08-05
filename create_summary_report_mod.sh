@@ -22,7 +22,9 @@ done
 
 rm -rf run_tmp.txt quast_results
 
-# Prueba mqc
+################################################################################################################################################################################
+# Prueba mqc####################################################################################################################################################################
+################################################################################################################################################################################
 
 echo -e "Sample\t# Input reads\t# Trimmed reads (fastp)\t% Non-host reads (Kraken 2)\t% Mapped reads\t# Mapped reads\t# Trimmed reads (iVar)\tCoverage median\t% Coverage > 1x\t% Coverage > 10x\t# SNPs\t# INDELs\t# Missense variants\t# Ns per 100kb consensus\tPangolin lineage\tNextclade clade" > prueba_mqc.csv
 cat samples_id_mod.txt | while read in

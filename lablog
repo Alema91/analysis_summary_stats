@@ -4,4 +4,3 @@ scratch_dir=$(echo $PWD | sed "s/\/data\/bi\/scratch_tmp/\/scratch/g")
 CONSENSUS="*/variants/ivar/consensus/bcftools/"
 
 echo "srun --partition short_idx --output QUAST.%j.log --chdir ${scratch_dir} quast $CONSENSUS/*.consensus.fa -o quast_results" > _05_quast.sh
-

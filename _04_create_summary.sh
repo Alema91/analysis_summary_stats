@@ -1,1 +1,0 @@
-bash create_summary_report_mod.sh
