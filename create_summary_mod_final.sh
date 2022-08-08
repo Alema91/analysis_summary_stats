@@ -1,5 +1,5 @@
 echo -e "run\tuser\thost\tVirussequence\tsample\ttotalreads\treadshostR1\treadshost\t%readshost\treadsvirus\t%readsvirus\tunmappedreads\t%unmapedreads\tmedianDPcoveragevirus\tCoverage>10x(%)\tInputreads\tTrimmedreads\tNsper100kb\tVariantsinconsensusx10\tMissenseVariants\t%Ns10x\tLineage" > mapping_illumina_mod.tab
-echo -e "Sample\t# Input reads\t# Trimmed reads (fastp)\t% Non-host reads (Kraken 2)\t% Mapped reads\t# Mapped reads\t# Trimmed reads (iVar)\tCoverage median\t% Coverage > 1x\t% Coverage > 10x\t# SNPs\t# INDELs\t# Missense variants\t# Ns per 100kb consensus\tPangolin lineage\tNextclade clade" > summary_mqc_mod.csv
+echo -e "Sample,# Input reads,# Trimmed reads (fastp),% Non-host reads (Kraken 2),% Mapped reads,# Mapped reads,# Trimmed reads (iVar),Coverage median,% Coverage > 1x,% Coverage > 10x,# SNPs,# INDELs,# Missense variants,# Ns per 100kb consensus,Pangolin lineage,Nextclade clade" > summary_mqc_mod.csv
 
 USER=$(pwd | cut -d '/' -f6 | cut -d '_' -f4)
 HOST=$(pwd | cut -d '/' -f8 | cut -d '_' -f4 | tr '[:upper:]' '[:lower:]' | sed 's/.*/\u&/')
