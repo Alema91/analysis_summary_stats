@@ -12,9 +12,9 @@ Un análisis de viralrecon con más de 100 muestras podría provocar problemas p
 
 """
 # copiamos los scripts para calcular la coverage con mosdepth
+
 rsync -rlv /data/bi/pipelines/script_summary_stats_sinmultiqc/create_df_coverage.R .
 rsync -rlv /data/bi/pipelines/script_summary_stats_sinmultiqc/create_summary_mod_final.sh create_summary_nomultiqc.sh
-
 # generamos el quast con los consensos
 #module load QUAST/5.0.2-foss-2020a-Python-3.8.2
 
@@ -31,7 +31,12 @@ echo "srun --partition short_idx --output COVERAGE.%j.log --chdir ${scratch_dir}
 # Summary stats
 
 echo "bash create_summary_nomultiqc.sh" > _07_create_summary_report_nomultiqc.sh
+
 """
+
+# Documentacion
+
+Se encuentra en el archivo """notebook.md"""
 
 
 

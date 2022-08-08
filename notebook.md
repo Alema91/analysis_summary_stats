@@ -23,4 +23,4 @@ He realizado los siguientes análisis estadísticos:
 - El test de Wilconxon obtiene un **p-valor mayor a 0.05 (0.34)**, por lo que aceptamos la hipotesis nula de igualdad de medianas.
 - El coeficiente de correlación de Spearman obtiene **un valor de 0.98**, indicando una gran dependencia entre las dos variables
 
-![](plots/smooth_%10x.png)
+![](plots/smooth_10x.png)
