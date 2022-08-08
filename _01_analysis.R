@@ -64,8 +64,7 @@ samples_dif <- setdiff(filter_multiqc_coverage$sample, filter_data_coverage$samp
 filter_2_multiqc_coverage <- filter_multiqc_coverage[filter_multiqc_coverage$sample %notin% samples_dif, ]
 
 # Data final
-df_coverage <- merge(filter_2_data_coverage, filter_2_multiqc_coverage)
-
+df_coverage <- merge(filter_2_multiqc_coverage, filter_data_coverage)
 ##### Analisis ----
 
 # df long
@@ -73,6 +72,7 @@ df_coverage_long <- melt(df_coverage, id.var = c("sample"))
 df_coverage_long$value <- as.numeric(df_coverage_long$value)
 df_coverage_long$value[is.na(df_coverage_long$value)] <- 0
 
+######################
 # mediana
 df_median <- df_coverage_long[df_coverage_long$variable == c("median_bu", "median_multiqc"), ]
 df_median$variable <- factor(df_median$variable)
@@ -80,13 +80,21 @@ df_median$variable <- factor(df_median$variable)
 # test wilconxon (Mann-Whitney test)
 wilcox.test(value ~ variable, data = df_median)
 
-# RSME
-rmse(as.numeric(df_coverage$"%10_bu"), as.numeric(df_coverage$"%10_multiqc"))
+# df Correlacion
+df_cor <- data.frame(
+    median_bu = df_coverage_long$value[df_coverage_long$variable == "median_bu"],
+    median_multiqc = df_coverage_long$value[df_coverage_long$variable == "median_multiqc"],
+    bu_10x = df_coverage_long$value[df_coverage_long$variable == "%10_bu"],
+    multiqc_10x = df_coverage_long$value[df_coverage_long$variable == "%10_multiqc"]
+)
+
+# Correlacion spearman
+cor(df_cor$median_bu, df_cor$median_multiqc, method = "spearman")
 
 # Plots
-ggplot(df_median, aes(value, color = variable)) +
-    geom_histogram(aes(y = ..density..), color = "black", fill = "white") +
-    geom_density(alpha = .2, fill = "#FF6666")
+ggplot(df_cor, aes(median_bu, median_multiqc)) +
+    geom_point() +
+    geom_smooth(method = lm, formula = y ~ splines::bs(x, 3), se = T)
 
 # %10X
 df_10x <- df_coverage_long[df_coverage_long$variable == c("%10_bu", "%10_multiqc"), ]
@@ -95,7 +103,10 @@ df_10x$variable <- factor(df_10x$variable)
 # test wilconxon (Mann-Whitney test)
 wilcox.test(value ~ variable, data = df_10x)
 
+# Correlacion spearman
+cor(df_cor$bu_10x, df_cor$multiqc_10x, method = "spearman")
+
 # Plots
-ggplot(df_10x, aes(value, color = variable)) +
-    geom_histogram(aes(y = ..density..), color = "black", fill = "white") +
-    geom_density(alpha = .2, fill = "#FF6666")
+ggplot(df_cor, aes(bu_10x, multiqc_10x)) +
+    geom_point() +
+    geom_smooth(method = lm, formula = y ~ splines::bs(x, 3), se = T)
