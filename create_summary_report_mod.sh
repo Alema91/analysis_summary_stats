@@ -20,7 +20,7 @@ do
 	echo -e "$(echo ${in} | sed 's/_/-/g')\t$(echo 'NA')\t$(grep 'total_reads' */fastp/${in}.fastp.json | head -n1 | tail -n1 | cut -d ':' -f2 | sed 's/,//g')\t$(grep 'total_reads' */fastp/${in}.fastp.json | head -n2 | tail -n1 | cut -d ':' -f2 | sed 's/,//g')\t$(echo 'NA')\t$(echo 'NA')\t$(echo 'NA')\t$(echo 'NA')\t$(echo 'NA')\t$(echo 'NA')\t$(echo 'NA')\t$(echo 'NA')\t$(echo 'NA')\t$(cat quast_results/quast.log | grep "${in}.consensus" | cut -d "#" -f2 | grep "N's per 100 kbp" | cut -d "=" -f2)\t$(echo 'NA')\t$(echo 'NA')\t$(echo 'NA')\t$(echo 'NA')" >> summary_mqc_mod.csv
 done
 
-rm -rf run_tmp.txt quast_results
+# rm -rf run_tmp.txt quast_results
 
 ################################################################################################################################################################################
 # Prueba mqc####################################################################################################################################################################
