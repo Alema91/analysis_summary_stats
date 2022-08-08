@@ -10,7 +10,7 @@ Un análisis de viralrecon con más de 100 muestras podría provocar problemas p
 
 # lablog
 
-"""
+```
 # copiamos los scripts para calcular la coverage con mosdepth
 
 rsync -rlv /data/bi/pipelines/script_summary_stats_sinmultiqc/create_df_coverage.R .
@@ -32,11 +32,11 @@ echo "srun --partition short_idx --output COVERAGE.%j.log --chdir ${scratch_dir}
 
 echo "bash create_summary_nomultiqc.sh" > _07_create_summary_report_nomultiqc.sh
 
-"""
+```
 
 # Documentacion
 
-Se encuentra en el archivo """notebook.md"""
+Se encuentra en el archivo ```notebook.md```
 
 
 
